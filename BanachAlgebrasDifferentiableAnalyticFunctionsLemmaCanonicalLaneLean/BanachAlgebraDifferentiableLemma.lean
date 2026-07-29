@@ -1,0 +1,25 @@
+import canonicalLaneMathlib.AdmissibleClass
+import HautevilleHouse.BanachAlgebrasDifferentiableAnalyticFunctionsLemmaCanonicalLaneLean.HolomorphicFunctionalCalculusBridge
+
+namespace HautevilleHouse
+namespace BanachAlgebrasDifferentiableAnalyticFunctionsLemmaCanonicalLaneLean
+
+structure BanachAlgebraDifferentiableLemmaCertificate where
+  spectrumLayer : SpectrumCertificate
+  functionalCalculusLayer : FunctionalCalculusCertificate
+  analyticFunctionLayer : AnalyticFunctionCertificate
+
+def primitiveBanachAlgebraDifferentiableLemmaCertificate : BanachAlgebraDifferentiableLemmaCertificate := {
+  spectrumLayer := primitiveSpectrumCertificate,
+  functionalCalculusLayer := primitiveFunctionalCalculusCertificate,
+  analyticFunctionLayer := primitiveAnalyticFunctionCertificate
+}
+
+def BanachAlgebraDifferentiableLemmaLayerClosed (C : BanachAlgebraDifferentiableLemmaCertificate) : Prop :=
+  SpectrumLayerClosed C.spectrumLayer ∧ FunctionalCalculusLayerClosed C.functionalCalculusLayer ∧ AnalyticFunctionLayerClosed C.analyticFunctionLayer
+
+theorem banach_algebra_differentiable_lemma_layer_closed_checked : BanachAlgebraDifferentiableLemmaLayerClosed primitiveBanachAlgebraDifferentiableLemmaCertificate := by
+  exact And.intro spectrum_layer_closed_checked (And.intro functional_calculus_layer_closed_checked analytic_function_layer_closed_checked)
+
+end HautevilleHouse
+end BanachAlgebrasDifferentiableAnalyticFunctionsLemmaCanonicalLaneLean
